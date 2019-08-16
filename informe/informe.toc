@@ -1,0 +1,5 @@
+\babel@toc {spanish}{}
+\contentsline {section}{\numberline {1}Introducci\IeC {\'o}n}{2}
+\contentsline {section}{\numberline {2}Resoluci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {3}Experimentaci\IeC {\'o}n}{4}
+\contentsline {section}{\numberline {4}Conclusiones}{5}

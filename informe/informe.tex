@@ -1,0 +1,59 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc} % para poder usar tildes en archivos UTF-8
+\usepackage[spanish]{babel} % para que comandos como \today den el resultado en castellano
+\usepackage{a4wide} % márgenes un poco más anchos que lo usual
+\usepackage{caratula}
+\usepackage{verbatimbox}
+%\usepackage{algorithm}
+%\usepackage{algorithmic}
+%\usepackage{algpseudocode}
+\usepackage{float} %para decir a donde van los pseudocodigos
+\usepackage{icomma}
+\usepackage{multicol}
+\usepackage{todonotes}
+\usepackage[nottoc]{tocbibind}
+\usepackage{amsthm}
+\usepackage{amssymb} %Simbolos matematicos
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{tikz,pgf}
+\usetikzlibrary{babel,arrows,automata,graphs,graphs.standard,quotes,decorations.markings} %Para hacer grafos con tikz
+\usepackage{multirow} %Para las tablas
+
+\usepackage{rotating} %Para escribir vertical
+
+
+%\alglanguage{pseudocode}
+
+\input{macros}
+
+\begin{document}
+
+\input{caratula}
+
+\newpage
+\begin{center}
+\end{center}
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\newpage
+\tableofcontents
+
+% \twocolumn
+
+\newpage
+\input{Secciones/Descripcion}
+
+\newpage
+\input{Secciones/Resolucion.tex}
+
+\newpage
+\input{Secciones/Experimentacion.tex}
+
+\newpage
+\input{Secciones/Conclusiones.tex}
+
+\newpage
+
+\end{document}

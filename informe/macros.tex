@@ -1,0 +1,41 @@
+
+\newcommand{\bigO}{\mathcal{O}}
+
+\newcommand{\grafiquito}[2]{%
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=7cm]{./#1.png}
+    \caption{#2}
+    \label{fig:#1}
+    \end{figure}%
+}
+
+\newcommand{\png}[2]{%
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{./img/#1.png}
+    \caption{#2}
+    \label{png:#1}
+    \end{figure}%
+}
+
+\newcommand{\jpg}[2]{%
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{./img/#1.jpg}
+    \caption{#2}
+    \label{jpg:#1}
+    \end{figure}%
+}
+
+\tikzset{
+  big arrow/.style={
+    decoration={markings,mark=at position 1 with {\arrow[scale=4,#1]{>}}},
+    postaction={decorate},
+    shorten >=0.4pt},
+  big arrow/.default=black}
+  
+\newtheorem{obs}{Observaci\'on}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{ejemplo}{Ejemplo}[section]
+\renewcommand*{\proofname}{Demostraci\'on}
