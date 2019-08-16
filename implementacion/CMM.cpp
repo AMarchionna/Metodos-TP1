@@ -83,7 +83,7 @@ int main(){
 	vector<double> resultado = eliminacionGaussiana(C,b); //Resolvemos el sistema
 	
 	for(int i = 0; i < T; i++){//Imprimo el resultado
-		cout << resultado[i] << endl;
+		cout << resultado[i] << endl; 
 	}
 	return 0;
 }

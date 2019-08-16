@@ -1,1 +1,35 @@
 \section{Introducción}
+
+En la actualidad existen diversas técnicas para determinar la tabla de posiciones en una competencia compuesta por varios equipos. En este trabajo vamos a estudiar varias de ellas, principalmente el método de la Mátriz de Colley (CMM), elaborado por Wes Colley.
+
+Primero, debemos entender cuál es el problema a resolver.
+
+\noindent \textbf{Ranking de equipos} En una competencia, compuesta por $T$ equipos, se enfrentan en cada uno de $P$ encuentros $2$ de los equipos. En cada partido, exactamente uno de los $2$ resulta ganador, por lo que no hay empates. El objetivo es determinar un orden entre los equipos, que refleje el desempeño de los mismos.
+
+Para entender los distintos métodos posibles, veamos algunos ejemplos.
+
+\begin{ejemplo}
+	\normalfont
+	Supongamos que en una competencia hay $6$ equipos, y que se han jugado $10$ partidos, en donde cada equipo anota goles y el ganador del partido resulta aquel que más goles convirtió, y no es posible el empate. Los resultados se pueden observar en la siguiente tabla:
+
+	\begin{table}[h]
+		\centering
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			\textbf{Equipo local} & \textbf{Goles del local} & \textbf{Equipo visitante} & \textbf{Goles del visitante} \\ \hline
+			1                     & 16                       & 4                         & 13                           \\ \hline
+			2                     & 38                       & 5                         & 17                           \\ \hline
+			2                     & 28                       & 6                         & 23                           \\ \hline
+			3                     & 34                       & 1                         & 21                           \\ \hline
+			3                     & 23                       & 4                         & 10                           \\ \hline
+			4                     & 31                       & 1                         & 6                            \\ \hline
+			5                     & 33                       & 6                         & 25                           \\ \hline
+			5                     & 38                       & 4                         & 23                           \\ \hline
+			6                     & 27                       & 2                         & 6                            \\ \hline
+			6                     & 20                       & 5                         & 12                           \\ \hline
+		\end{tabular}
+	\end{table}
+	
+	
+\end{ejemplo}
+ 
