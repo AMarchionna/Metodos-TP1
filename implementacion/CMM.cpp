@@ -42,8 +42,8 @@ vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b)
 	
 }
 
-int main(){
-	freopen("in.txt", "r", stdin);
+int main(int argc, char* argv[]){
+	freopen(argv[1], "r", stdin);
 	int T; //Cantidad de equipos
 	int cantPartidos; //La cantidad de partidos disputados
 	cin >> T >> cantPartidos;
@@ -82,6 +82,7 @@ int main(){
 	
 	vector<double> resultado = eliminacionGaussiana(C,b); //Resolvemos el sistema
 	
+	freopen(argv[2], "w", stdout);
 	for(int i = 0; i < T; i++){//Imprimo el resultado
 		cout << resultado[i] << endl; 
 	}
