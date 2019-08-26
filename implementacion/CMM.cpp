@@ -16,15 +16,31 @@ void imprimirMatriz(vector<vector<double> > A, vector<double> b){
 
 vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b){ 
 	//Resuelve el sistema Ax = b
-	//Asume que A es de nxn y que b tiene n elementos
+	//Asume que A es de nxn y que b tiene n elementos	
 	int n = (int)b.size();
+	vector<vector<double> > costos_A;
+	vector<double> costos_b;
+	for(int i = 0; i < n; i++){
+		vector<double> fila;
+		for(int j = 0; j < n; j++){
+			fila.push_back(0);
+		}
+		costos_A.push_back(fila);
+		costos_b.push_back(0);
+	}
 	for(int i = 0; i < n-1; i++){//Triangulo la matriz
 		for(int j = i+1; j < n; j++){
 			double m = A[j][i]/A[i][i];
 			for (int k = i; k < n; k++){
-				A[j][k] -= m * A[i][k]; //TODO : KOHAN
+				double y = -m * A[i][k];
+				double t = A[j][k] + y;
+				costos_A[j][k] = (t - A[j][k]) - y;
+				A[j][k] = t;
 			}
-			b[j] -= m * b[i]; //TODO KOHAN
+			double y = -m * b[i];
+			double t = b[j] + y;
+			costos_b[j] = (t - b[j]) - y;
+			b[j] = t;
 		}
 	}
 	
@@ -33,8 +49,12 @@ vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b)
 	
 	for(int i = n-1; i >= 0; i--){//Despejo las incognitas
 		double res = b[i];
+		double c = 0;
 		for(int j = i+1; j < n; j++){
-			res -= A[i][j]*resultado[j]; //TODO KOHAN
+			double y = -A[i][j]*resultado[j];
+			double t = res + y;
+			c = (t - res) - y;
+			res = t;
 		}
 		res /= A[i][i];
 		resultado[i] = res;
@@ -60,15 +80,7 @@ int main(int argc, char* argv[]){
 	vector<double> b; //El vector b del metodo CMM
 	for(int i = 0; i < T; i++){//Inicializo el vector b
 		b.push_back(1);
-	} 	
-	
-	int partidosGanados[T][T];
-	
-	for(int i = 0; i < T; i++){
-		for(int j = 0; j < T; j++){
-			partidosGanados[i][j] = 0;
-		}
-	}
+	} 
 	//Leo los partidos disputados
 	for(int partido = 0; partido < cantPartidos; partido++){
 		int fecha, equipoLocal, equipoVisitante, golesLocal, golesVisitante;
@@ -88,7 +100,6 @@ int main(int argc, char* argv[]){
 		//Actualizo el vector b
 		b[equipoLocal] += 0.5;
 		b[equipoVisitante] -= 0.5;
-		partidosGanados[equipoLocal][equipoVisitante] += 1; //Guardamos la cantidad de partido que i le gano a j
 	}
 
 	
@@ -97,19 +108,10 @@ int main(int argc, char* argv[]){
 	for(int i = 0; i < T; i++){
 		suma += b[i];
 	}
-	cout << suma << endl;
+	
 	freopen(argv[2], "w", stdout);
 	for(int i = 0; i < T; i++){//Imprimo el resultado
 		cout << resultado[i] << endl; 
-	}
-	cout << endl;
-	for(int i = 0; i < T; i++){
-		double rating = 0;
-		for(int j = 0; j < T; j++) if(i != j){
-			rating += resultado[j] * (partidosGanados[i][j] - partidosGanados[j][i]); //TO DO KAHAN
-		}
-		rating /= (C[i][i]-2);
-		cout << rating << endl;
 	}
 	return 0;
 }
