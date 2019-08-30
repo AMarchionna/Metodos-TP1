@@ -1,12 +1,15 @@
 #include <bits/stdc++.h>
 
+
 using namespace std;
 
 vector<string> testIn = {"tests/test1.in", "tests/test2.in", "tests/test-prob-1.in", "tests/test-prob-2.in"};
-
 vector<string> testExpected = {"tests/test1.expected", "tests/test2.expected", "tests/test-prob-1.expected", "tests/test-prob-2.expected"};
-
+vector<string> testAtpCases = {"../data/atp_mathces_2015.dat"};
+vector<string> fixedAtpCases;
 vector<vector<double> > a_restar_kohan;
+
+
 
 void printVector(const vector<double>& v){
 	
@@ -114,7 +117,7 @@ vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b)
 
 //Armar bien PLS los .h
 
-vector<double> solve(string input){
+vector<double> CMM(string input){
 
 	ifstream Input;
 	Input.open(input);
@@ -168,7 +171,7 @@ void testCatedra(){
 
 	for(int i=0; i < testIn.size(); i++){
 		
-		vector<double> x = solve(testIn[i]);
+		vector<double> x = CMM(testIn[i]);
 
 		ifstream Expected;
 
@@ -189,11 +192,79 @@ void testCatedra(){
 
 }
 
+vector<double> WP(string input){
+	vector<double> v;
+	return v;
+}
+
+vector<double> ELO(string input){
+	vector<double> v;
+	return v;
+}
+
+bool imprimirResultados = false;
+bool imprimirComparacion = true;
+
+void fixFile(string input){
+
+	ifstream Old_File; ofstream Proper_File;
+	string name = "test_case_"; name += input;
+	Old_File.open(input); Proper_File.open(name);
+
+	map<int, int> m; m.clear();
+	int nextPlayer = 1;
+
+	int T, L; Old_File >> T >> L;
+	Proper_File << T << " " << L << endl;
+	for(int i=0; i<L; i++){
+
+		int fecha, local, gol_local, vis, gol_vis;
+		Old_File >> fecha >> local >> gol_local >> vis >> gol_vis;
+		Proper_File << fecha << " ";
+
+		if(m.count(local)==0){ //Verifico si el equipo es nuevo
+			m.insert({local, nextPlayer}); nextPlayer += 1;
+		}
+		Proper_File << m[local] << " " << gol_local << " ";
+
+		if(m.count(vis)==0){ 
+			m.insert({vis, nextPlayer}); nextPlayer += 1;
+		}
+		Proper_File << m[vis] << " " << gol_vis << endl;
+
+	}
+
+	Old_File.close(); Proper_File.close();
+
+}
+
+/*
+void testAtpFile(string input){
+
+	vector<double> CMM_res = CMM(input);
+	vector<double> WP_res = WP(input);
+	vector<double> ELO_res = ELO(input);
+	vector<int> orderCMM, orderWP, orderELO;
+	orderCMM.clear(); orderWP.clear(); orderELO.clear();
+
+	for(int i=1; i<CMM_res.size(); i++){
+		orderCMM.push_back(i); orderWP.push_back(i); orderELO.push_back(i);
+	}
+
+}
+
+void testAtp() {
+
+	for(int i=0; i<fixedAtpCases.size(); i++){
+		testAtpFile(fixedAtpCases[i]);
+	}
+
+}*/
+
 int main() {
 
-	cout << endl;
-
-	testCatedra();
+	fixFile("example.txt");
+	//testCatedra();
 
 	return 0;
 
