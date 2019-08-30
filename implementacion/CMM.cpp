@@ -1,18 +1,8 @@
-#include <bits/stdc++.h>
+#include "tools.cpp"
 
 using namespace std;
 
 vector<vector<double> > a_restar_kohan;
-
-void imprimirMatriz(vector<vector<double> > A, vector<double> b){
-	int n = (int)b.size();
-	for(int i = 0; i < n; i++){
-		for(int j = 0; j < n; j++){
-			cout << A[i][j] << " ";
-		}
-		cout << "    " << b[i] << endl << endl;
-	}
-}
 
 vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b){ 
 	//Resuelve el sistema Ax = b
@@ -64,11 +54,14 @@ vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b)
 	
 }
 
-int main(int argc, char* argv[]){
-	freopen(argv[1], "r", stdin);
+void CMM(char* input, char* output){
+
+	ifstream Input;
+	Input.open(input);
+
 	int T; //Cantidad de equipos
 	int cantPartidos; //La cantidad de partidos disputados
-	cin >> T >> cantPartidos;
+	Input >> T >> cantPartidos;
 	vector<vector<double> > C; //La matriz de Colley
 	for(int i = 0; i < T; i++){//Inicializamos C
 		vector<double> fila;
@@ -84,7 +77,7 @@ int main(int argc, char* argv[]){
 	//Leo los partidos disputados
 	for(int partido = 0; partido < cantPartidos; partido++){
 		int fecha, equipoLocal, equipoVisitante, golesLocal, golesVisitante;
-		cin >> fecha >> equipoLocal >> golesLocal >> equipoVisitante >> golesVisitante;
+		Input >> fecha >> equipoLocal >> golesLocal >> equipoVisitante >> golesVisitante;
 		if (golesLocal < golesVisitante){
 			//Si gano el visitante, los cambio para asumir que gano el local
 			swap(equipoLocal, equipoVisitante);
@@ -102,6 +95,7 @@ int main(int argc, char* argv[]){
 		b[equipoVisitante] -= 0.5;
 	}
 
+	Input.close();
 	
 	vector<double> resultado = eliminacionGaussiana(C,b); //Resolvemos el sistema
 	double suma = 0;
@@ -109,9 +103,10 @@ int main(int argc, char* argv[]){
 		suma += b[i];
 	}
 	
-	freopen(argv[2], "w", stdout);
-	for(int i = 0; i < T; i++){//Imprimo el resultado
-		cout << resultado[i] << endl; 
+	ofstream Output;
+	Output.open(output);
+	for (int i = 0; i < T; i++){
+		Output << resultado[i] << "\n";
 	}
-	return 0;
+	Output.close();
 }

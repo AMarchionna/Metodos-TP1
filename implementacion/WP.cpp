@@ -1,19 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <fstream>
+#include "tools.cpp"
 
 using namespace std;
-
-void printVector(const vector<double>& v){
-	
-	cout << "(";
-
-	for (int i = 0; i < v.size(); ++i){
-		cout << v[i] << " ";
-	}
-
-	cout << ") \n";
-} 
 
 void WP(char* input, char* output){
 
@@ -56,11 +43,4 @@ void WP(char* input, char* output){
 
 }
 
-int main(int argc, char* argv[]) {
-
-	WP(argv[1], argv[2]);
-
-	return 0;
-
-}
 
