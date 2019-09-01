@@ -19,7 +19,7 @@ vector<double> elo (double T, vector<pair<int, int> > partidos){
 	return ranking;
 }
 
-void ELO(char* input, char* output){
+vector<double> ELO(char* input, char* output){
 	ifstream Input;
 	Input.open(input);
 
@@ -45,9 +45,6 @@ void ELO(char* input, char* output){
 
 	vector<double> result = elo(T, partidos);
 
-	double sum; for (int i = 0; i < result.size(); ++i) sum += result[i];
-	cout << sum << endl;
-
 	ofstream Output;
 	Output.open(output);
 	for (int i = 0; i < result.size(); i++){
@@ -55,6 +52,6 @@ void ELO(char* input, char* output){
 	}
 	Output.close();
 
-	printVector(result);
+	return result;
 }
 

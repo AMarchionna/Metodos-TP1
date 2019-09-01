@@ -9,6 +9,8 @@
 
 using namespace std;
 
+double errorTolerable = 1e-4;
+
 void printVector(const vector<double>& v){
 	
 	cout << "(";
@@ -30,5 +32,41 @@ void imprimirMatriz(vector<vector<double> > A, vector<double> b){
 	}
 }
 
+bool compareResults(const vector<double>& x, const vector<double>& y){
+
+	bool diferenciasGrandes = false; 
+	
+	cout << "(";
+
+	for(int i=0; i<x.size()-1; i++){
+
+		cout << abs(x[i]-y[i]) << ", ";
+		if(abs(x[i]-y[i])>=1e-4) diferenciasGrandes = true;
+
+	}
+
+	cout << abs(x[x.size()-1]-y[y.size()-1]) << ") \n";
+	return diferenciasGrandes;
+}
+
+void checkResults(const vector<vector<double> >& A,const vector<double>& x,const vector<double>& b){
+	
+	cout << endl;
+
+	vector<double> diferencias (x.size(), 0);
+	
+	for(int i=0; i<diferencias.size(); i++){
+		double acum = 0;
+		for(int j=0; j<A.size(); j++){
+			acum += A[i][j] * x[j];
+		}
+		diferencias[i] = abs(b[i]-acum);
+	}
+	
+	for(int i=0; i<diferencias.size(); i++) cout << diferencias[i] << " ";
+
+	cout << "\n";
+
+}
 
 #endif //TOOLS

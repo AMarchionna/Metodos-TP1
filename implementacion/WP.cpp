@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void WP(char* input, char* output){
+vector<double> WP(char* input, char* output){
 
 	ifstream Input;
 	Input.open(input);
@@ -40,6 +40,8 @@ void WP(char* input, char* output){
 		Output << result[i] << "\n";
 	}
 	Output.close();
+
+	return result;
 
 }
 

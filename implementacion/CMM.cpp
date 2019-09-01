@@ -54,7 +54,7 @@ vector<double> eliminacionGaussiana(vector<vector<double> > A, vector<double> b)
 	
 }
 
-void CMM(char* input, char* output){
+vector<double> CMM(char* input, char* output){
 
 	ifstream Input;
 	Input.open(input);
@@ -109,4 +109,6 @@ void CMM(char* input, char* output){
 		Output << resultado[i] << "\n";
 	}
 	Output.close();
+
+	return resultado;
 }
