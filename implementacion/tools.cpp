@@ -49,9 +49,7 @@ bool compareResults(const vector<double>& x, const vector<double>& y){
 	return diferenciasGrandes;
 }
 
-void checkResults(const vector<vector<double> >& A,const vector<double>& x,const vector<double>& b){
-	
-	cout << endl;
+vector<double> checkResults(const vector<vector<double> >& A,const vector<double>& x,const vector<double>& b){
 
 	vector<double> diferencias (x.size(), 0);
 	
@@ -63,9 +61,7 @@ void checkResults(const vector<vector<double> >& A,const vector<double>& x,const
 		diferencias[i] = abs(b[i]-acum);
 	}
 	
-	for(int i=0; i<diferencias.size(); i++) cout << diferencias[i] << " ";
-
-	cout << "\n";
+	return diferencias;
 
 }
 

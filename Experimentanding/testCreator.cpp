@@ -26,11 +26,13 @@ void createTournament(int T, int P){
 		
 		outfile << fecha << " " << A << " " << A_p << " " << B << " " << B_p << endl;
 	}
+
+	outfile.close();
 }
 
-int main(int argc, char* argv[]){
+/*int main(int argc, char* argv[]){
 	int T = atoi(argv[1]);
 	int P = atoi(argv[2]);
 
 	createTournament(T, P);
-}
+}*/
