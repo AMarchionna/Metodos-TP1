@@ -13,7 +13,7 @@ void createTournament(int T, int P){
 
 	outfile << T << " " << P << endl;
 
-	int A, B, A_p, B_p, ganador;
+	int A, B, A_p, B_p;
 
 	for (int i=0; i<P; i++){
 		A = rand() % T +1;
@@ -21,14 +21,9 @@ void createTournament(int T, int P){
 		while (B == A){
 			B = rand() % T +1; 
 		}
-		ganador = rand() % 2 + 1;
-		if (ganador == 1){
-			A_p = 1;
-			B_p = 0;
-		} else {
-			A_p = 0;
-			B_p = 1;
-		}
+		A_p = rand() % 2;
+		B_p = 1 - A_p;
+		
 		outfile << fecha << " " << A << " " << A_p << " " << B << " " << B_p << endl;
 	}
 }
