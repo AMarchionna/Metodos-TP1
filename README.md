@@ -8,6 +8,7 @@ Para ejecutar el _main_ se sigue el protocolo de la cátedra una vez generado el
 
 * Para agregar más datos de la ATP alcanza con incorporar el nombre del archivo al array de casos de test en **experimentacion.cpp** y el **.dat** al mismo directorio (Arreglar el tema de los directorio).
 * La comparación con la cátedra se lleva a cabo desde la función **testCatedra**.
-* Se pueden generar tests de arbitrario tamaño con ... (_in progress_)
-* Si ejecutan experimentacion.cpp les compara los resultados de algunos torneos entre los 3 metodos.
+* Se pueden generar tests de tamaño arbitrario con ... (_in progress_)
+* En **experimentacion.cpp** tienen varios _drivers_ para tirar experimentaciones. Están todos comentados en el _main_. 
+
 
