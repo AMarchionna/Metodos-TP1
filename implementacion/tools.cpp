@@ -36,16 +36,16 @@ bool compareResults(const vector<double>& x, const vector<double>& y){
 
 	bool diferenciasGrandes = false; 
 	
-	cout << "(";
+	cout << "("; double acum = 0;
 
 	for(int i=0; i<x.size()-1; i++){
 
-		cout << abs(x[i]-y[i]) << ", ";
+		cout << abs(x[i]-y[i]) << ", "; acum += abs(x[i]-y[i]);
 		if(abs(x[i]-y[i])>=1e-4) diferenciasGrandes = true;
 
 	}
 
-	cout << abs(x[x.size()-1]-y[y.size()-1]) << ") \n";
+	cout << abs(x[x.size()-1]-y[y.size()-1]) << ") -> " << acum << "\n";
 	return diferenciasGrandes;
 }
 

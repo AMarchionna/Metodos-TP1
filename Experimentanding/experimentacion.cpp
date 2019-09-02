@@ -15,8 +15,25 @@
 
 using namespace std;
 
-vector<string> testIn = {"tests/test1.in", "tests/test2.in", "tests/test-prob-1.in", "tests/test-prob-2.in"};
-vector<string> testExpected = {"tests/test1.expected", "tests/test2.expected", "tests/test-prob-1.expected", "tests/test-prob-2.expected"};
+vector<string> testIn = {"tests/test1.in", 
+						"tests/test2.in", 
+						"tests/test-prob-1.in", 
+						"tests/test-prob-2.in", 
+						"tests/test_completo_10_1.in", 
+						"tests/test_completo_100_4.in", 
+						"tests/test_completo_100_8.in", 
+						"tests/test_completo_1000_2.in",
+						"tests/test_completo_1000_8.in"};
+
+vector<string> testExpected = {"tests/test1.expected", 
+							"tests/test2.expected", 
+							"tests/test-prob-1.expected", 
+							"tests/test-prob-2.expected",
+							"tests/test_completo_10_1.expected", 
+							"tests/test_completo_100_4.expected", 
+							"tests/test_completo_100_8.expected", 
+							"tests/test_completo_1000_2.expected",
+							"tests/test_completo_1000_8.expected"};
 vector<string> testAtpCases = {"atp_matches_2015.dat", "atp_matches_2016.dat"};
 vector<string> fixedAtpCases;
 string s = "output.txt"; //Lo uso para pasar archivos basura a las funciones
@@ -415,7 +432,7 @@ int main() {
 
 	/* Drivers */
 
-	//testCatedra();
+	testCatedra();
 	//testAtp();
 	//teamCountDoesntMatter();
 	//matchesCountDoesntMatter();
