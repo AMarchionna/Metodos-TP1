@@ -12,7 +12,7 @@ void actualizarRanking(vector<double>& ranking, pair<int, int> partido){
 }
 
 vector<double> elo (double T, vector<pair<int, int> > partidos){
-	vector<double> ranking(T,1/T);
+	vector<double> ranking(T,1);
 	for(int i=0; i < partidos.size() ; i++){
 		actualizarRanking(ranking, partidos[i]);	
 	}
