@@ -3,7 +3,7 @@
 using namespace std;
 
 void actualizarRanking(vector<double>& ranking, pair<int, int> partido){
-	double K = 40 ; //cambiar la constante para experimentar
+	double K = 40 ;
 	int ganador = partido.first;
 	int perdedor = partido.second;
 	int temp = ranking[ganador-1];
