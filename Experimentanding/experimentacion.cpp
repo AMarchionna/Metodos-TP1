@@ -314,14 +314,54 @@ void makeTestCases(){
 	}
 }
 
-void comparePlayersResult(string file){
+int fromValueKey(map<int, int>& m, int value){
+	for(auto &x: m) {
+		if(x.second == value)
+			return x.first;
+	}
+	return 0;
+}
+
+void comparePlayersResult(){
 
 	/* Arma un torneo sin perder los ID de los jugadores */
 
-	char* torneo = const_cast<char*>(file.c_str());
+	/* Guardo el mapeo que se hace durante el fixFile */
+
+	map<int, int> m = fixFile(testAtpCases[0]);
+
+	/*   Realizo el torneo con cada ranking   */
+
+	char* torneo = const_cast<char*>(fixedAtpCases[0].c_str());
 	char* genericOutput = const_cast<char*>(s.c_str());
 
-	map<int, int> m = fixFile(file);
+	vector<double> CMM_res = CMM(torneo, genericOutput);
+	vector<double> WP_res = WP(torneo, genericOutput);
+	vector<double> ELO_res = ELO(torneo, genericOutput);
+	vector<pair<double, int>> orderCMM, orderWP, orderELO;
+	orderCMM.clear(); orderWP.clear(); orderELO.clear();
+
+	pair<double, int> elem = make_pair (0, 0);
+	for(int i=0; i<CMM_res.size(); i++){ 
+		elem.second = i; 
+		elem.first = CMM_res[i]; orderCMM.push_back(elem);
+		elem.first = WP_res[i]; orderWP.push_back(elem);
+		elem.first = ELO_res[i]; orderELO.push_back(elem);
+	}
+
+	sort(orderCMM.begin(), orderCMM.end());
+	sort(orderWP.begin(), orderWP.end());
+	sort(orderELO.begin(), orderELO.end());
+
+	cout << "  CMM  |  WP  |  ELO  " << endl;
+
+	for(int j=0; j<equiposAComparar; j++){
+		cout << "  " << fromValueKey(m, orderCMM[orderCMM.size()-1-j].second) << "  |";
+		cout << "  " << fromValueKey(m, orderWP[orderCMM.size()-1-j].second) << "  |";
+		cout << "  " << fromValueKey(m, orderELO[orderCMM.size()-1-j].second) << "  " << endl;
+	}
+
+	cout << endl << "----------------------------------" << endl;
 }
 
 
@@ -379,7 +419,8 @@ int main() {
 	//testAtp();
 	//teamCountDoesntMatter();
 	//matchesCountDoesntMatter();
-	matchTeamMatter();
+	//matchTeamMatter();
+	//comparePlayersResult();
 
 	return 0;
 
