@@ -6,7 +6,7 @@ Para ejecutar el _main_ se sigue el protocolo de la cátedra una vez generado el
 
 ## Experimentación
 
-En **experimentacion.cpp** se cuenta con distintas herramientas para verificar los resultados del informe. Estas son:
+En **experimentacion.cpp** se cuenta con distintas herramientas para verificar los resultados del informe. Para ejecutarlas alcanza con descomentarlas, compilar y ejecutar el **.cpp**. Se recomienda no ejecutar varias en simultáneo. Estas son:
 
 * **TestCatedra**: Compara los resultados con todos los tests de la cátedra. Imprimer por consola el vector de diferencias junto a su norma infinito y su norma 1.
 * **TeamCount**: Realiza la experimentación en la cual la cantidad de partidos se mantiene fija mientrasque la cantidad de equipos aumenta. Sus parámetros pueden ajustarse desde la función.
