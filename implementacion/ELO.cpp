@@ -3,7 +3,7 @@
 using namespace std;
 
 void actualizarRanking(vector<double>& ranking, pair<int, int> partido){
-	double K = 40 ;
+	double K = 40 ; //cambiar la constante para experimentar
 	int ganador = partido.first;
 	int perdedor = partido.second;
 	int temp = ranking[ganador-1];
@@ -12,7 +12,7 @@ void actualizarRanking(vector<double>& ranking, pair<int, int> partido){
 }
 
 vector<double> elo (double T, vector<pair<int, int> > partidos){
-	vector<double> ranking(T,1);
+	vector<double> ranking(T,1/T);
 	for(int i=0; i < partidos.size() ; i++){
 		actualizarRanking(ranking, partidos[i]);	
 	}
