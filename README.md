@@ -8,7 +8,7 @@ Para ejecutar el _main_ se sigue el protocolo de la cátedra una vez generado el
 
 En **experimentacion.cpp** se cuenta con distintas herramientas para verificar los resultados del informe. Estas son:
 
-* **TestCatedra()**: Compara los resultados con todos los tests de la cátedra. Imprimer por consola el vector de diferencias junto a su norma infinito y su norma 1.
+* **TestCatedra**: Compara los resultados con todos los tests de la cátedra. Imprimer por consola el vector de diferencias junto a su norma infinito y su norma 1.
 * **TeamCount**: Realiza la experimentación en la que la cantidad de partidos se mantiene fija mientrasque la cantidad de equipos aumenta. Sus parámetros pueden ajustarse desde la función.
 * **MatchesCount**. Realiza la experimentación en la que la cantidad de equipos se mantiene fija mientras que la cantidad de equipos aumenta. Idem anterior.
 * **TeamMatchesCount**: Realiza la experimentación en la que se modifican tanto la cantidad de partidos como la cantidad de equipos. Idem anterior.
