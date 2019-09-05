@@ -376,7 +376,7 @@ bool moreData = true;
 
 void testAtp(int i){
 
-	/* Arma un torneo sin perder los ID de los jugadores */
+	/* Genera el ranking del torneo y lo imprime por consola */
 
 	/* Guardo el mapeo que se hace durante el fixFile */
 
@@ -482,7 +482,7 @@ void testAtp(int i){
 
 void testNBA() {
 
-	/* Para armar el ranking de los equipos de la NBA */
+	/* Arma el ranking de los equipos de la NBA */
 
 	// Primero armamos el diccionario con el nombre de los equipos
 
