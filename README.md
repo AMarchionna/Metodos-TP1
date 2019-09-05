@@ -2,7 +2,7 @@
 
 ## Notas para la ejecución princial:
 
-Para ejecutar el _main_ se sigue el protocolo de la cátedra una vez generado el ejecutable con **g++ -o ejec main.cpp** desde el directorio principal. En experimentación se cuenta con distintas herramientas para evaluar resultados.
+Para ejecutar el _main_ se sigue el protocolo de la cátedra una vez generado el ejecutable con **g++ -o ejec main.cpp** desde el directorio principal. 
 
 ## Experimentación
 
