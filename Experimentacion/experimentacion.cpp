@@ -659,6 +659,69 @@ void estrategiaPromediada() {
 
 }
 
+void EloVSCMM() {
+
+	/*  Crea un torneo donde los resultados de Elo son  */
+	/*            distintos a los de CMM                */
+
+	string fileName = "CMMvsElo.txt";
+	ofstream File; File.open(fileName);
+	int teams = 20; int matches = 2000; int Franja = 50;
+	int end = 40;
+
+	File << teams << " " << 4*matches << endl;
+
+	for(int i=0; i<4*matches; i++) {
+		//Fecha, local, puntos_l, vis, puntos_v
+		if(i<2000-Franja)
+			File << 1 << " " << (i%5)+1 << " 1 " << (i%15)+6 << " 0 " << endl;
+			//Inflamos el ranking de los primeros 5 equipos.
+		if(i>=2000-Franja && i<2000+Franja) 
+			File << 1 << " " << (i%2)+19 << " 1 " << (i%5)+1 << " 0 " << endl;
+			//Damos ranking a los equipos 19 y 20 
+		if((i>=2000+Franja))
+			File << 1 << " " << (i%13)+6 << " 1 " << (i%5)+1 << " 0 " << endl;
+	}
+
+	File.close();
+
+	cout << "Realizando experimento: CMM vs Elo" << endl;
+	cout << "Generando torneo..." << endl;
+	cout << "#equipos: " << teams << 
+			" | #partidos: " << 4*matches << 
+			" | Franja de victorias: " << 2*Franja << endl << endl;
+
+
+
+	char* torneo = const_cast<char*>(fileName.c_str());
+	char* genericOutput = const_cast<char*>(s.c_str());
+
+	vector<double> CMM_res = CMM(torneo, genericOutput);
+	vector<double> ELO_res = ELO(torneo, genericOutput);
+	vector<pair<double, int>> orderCMM, orderELO;
+	orderCMM.clear(); orderELO.clear();
+
+	pair<double, int> elem = make_pair (0, 0);
+	for(int i=0; i<CMM_res.size(); i++){ 
+		elem.second = i; 
+		elem.first = CMM_res[i]; orderCMM.push_back(elem);
+		elem.first = ELO_res[i]; orderELO.push_back(elem);
+	}
+
+	sort(orderCMM.begin(), orderCMM.end());
+	sort(orderELO.begin(), orderELO.end());
+
+	cout << "     Rank     |     CMM     |     ELO     " << endl;
+
+	for(int j=0; j<orderCMM.size(); j++){
+		cout << "      " << j+1 << "      |     ";
+		cout << orderCMM[orderCMM.size()-1-j].second + 1 << "      |     ";
+		cout << orderELO[orderCMM.size()-1-j].second + 1 << endl;
+	}
+
+
+}
+
 int main() {
 
 	/*      Drivers      */
@@ -674,6 +737,9 @@ int main() {
 	/* Torneos reales */
 	//testAtp(0);  //Se le pasa 0 para 2015, 1 para 2016
 	//testNBA();
+
+	/* Torneos de comparacion */
+	//EloVSCMM();
 
 	/* Estrategia para CMM */
 	//estrategia();
